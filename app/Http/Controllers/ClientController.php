@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ClientController extends Controller
@@ -16,7 +16,7 @@ class ClientController extends Controller
      */
     public function index(): View
     {
-        $clients = Client::get();
+        $clients = Client::paginate(15);
 
         return view('clients.index', [
             'clients' => $clients
@@ -51,16 +51,17 @@ class ClientController extends Controller
     /**
      * Cria um cliente no banco de dados
      *
-     * @param Request $request
+     * @param ClientRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ClientRequest $request): RedirectResponse
     {
         $dados = $request->except('_token');
 
         Client::create($dados);
 
-        return redirect('/clients');
+        return redirect()->route('clients.index')
+                ->with('mensagem', "Cadastrado com sucesso!");
     }
 
     /**
@@ -82,10 +83,10 @@ class ClientController extends Controller
      * Atualiza o cliente no banco de dados
      *
      * @param integer $id
-     * @param Request $request
+     * @param ClientRequest $request
      * @return RedirectResponse
      */
-    public function update(int $id, Request $request): RedirectResponse
+    public function update(int $id, ClientRequest $request): RedirectResponse
     {
         $client = Client::findOrFail($id);
 
@@ -95,7 +96,8 @@ class ClientController extends Controller
             'observacao' => $request->observacao
         ]);
 
-        return redirect('/clients');
+        return redirect()->route('clients.index')
+                ->with('mensagem', "Atualizado com sucesso!");
     }
 
     /**
