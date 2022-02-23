@@ -59,7 +59,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="cep">CEP</label>
-            <input required value="{{ old('cep', $employee->address->cep ?? '') }}" class="form-control" type="text" name="cep" id="cep" data-mask="00000-00" placeholder="Digite o CEP">
+            <input required value="{{ old('cep', $employee->address->cep ?? '') }}" class="form-control" type="text" name="cep" id="cep" data-mask="00000-000" placeholder="Digite o CEP">
         </div>
     </div>
     <div class="col-md-3">
