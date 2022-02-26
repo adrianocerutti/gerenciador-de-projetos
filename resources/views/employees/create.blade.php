@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('titulo', 'Novo Funcionários')
+@section('titulo', 'Novo Funcionário')
 
 @section('conteudo')
     <h1>Novo Funcionário</h1>

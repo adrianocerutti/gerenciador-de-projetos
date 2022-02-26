@@ -3,7 +3,7 @@
 @section('titulo', 'Detalhes do Projeto')
 
 @section('conteudo')
-    <div class="card">
+    <div class="card my-3">
         <h5 class="card-header">Detalhes do Projeto {{ $project->nome }}</h5>
         <div class="card-body">
             <p><strong>ID: </strong> {{ $project->id }}</p>
@@ -13,7 +13,7 @@
     </div>
     <br>
     <div class="card">
-        <h5 class="card-header">Funcionários que trabalhando no projeto {{ $project->nome }}</h5>
+        <h5 class="card-header">Funcionários que trabalham no projeto {{ $project->nome }}</h5>
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($project->employees as $employee)
+                    @forelse ($project->employees as $employee)
                         <tr>
                             <th scope="row">{{ $employee->id }}</th>
                             <td>{{ $employee->nome }}</td>
@@ -37,7 +37,11 @@
                                 </form>
                             </td> --}}
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <th>Nenhum funcionário alocado no projeto</th>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
