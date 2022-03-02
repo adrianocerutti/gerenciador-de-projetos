@@ -38,6 +38,11 @@ class EmployeeRequest extends FormRequest
         ];
     }
 
+    /**
+     * Trata os dados antes de serem usados
+     *
+     * @return void
+     */
     public function validationData()
     {
         $dados = $this->all();
