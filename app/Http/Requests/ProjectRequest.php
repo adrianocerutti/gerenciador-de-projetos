@@ -34,6 +34,7 @@ class ProjectRequest extends FormRequest
             'funcionarios' => ['required', 'array']
         ];
     }
+
     /**
      * Após a validação limpa os dados
      *
