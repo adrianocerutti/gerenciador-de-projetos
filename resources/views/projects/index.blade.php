@@ -21,11 +21,11 @@
                     <td>{{ $project->client->nome }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('projects.edit', $project) }}">Atualizar</a>
-                        {{-- <form action="{{ route('projects.destroy', $project) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('projects.destroy', $project) }}" method="POST" style="display: inline;">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit" onclick="return confirm('Tem certeza que deseja apagar?')">Apagar</button>
-                        </form> --}}
+                        </form>
                     </td>
                 </tr>
             @endforeach
